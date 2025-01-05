@@ -1,15 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-}
-
-#uploadSection {
-    display: none;
-    margin-top: 20px;
-}
-
-input[type="file"] {
-    margin-bottom: 10px;
+    text-align: center;
 }
 
 button {
@@ -17,10 +9,15 @@ button {
     background-color: #4285f4;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #357ae8;
+}
+
+#upload_section {
+    margin-top: 20px;
 }
