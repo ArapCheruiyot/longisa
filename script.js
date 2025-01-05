@@ -7,7 +7,7 @@ let tokenClient;
 let gapiLoaded = false;
 let gisLoaded = false;
 
-// Load Google API client
+// Load Google API client library
 function gapiLoaded() {
     gapi.load('client', async () => {
         await gapi.client.init({
@@ -19,7 +19,7 @@ function gapiLoaded() {
     });
 }
 
-// Load Google Identity Services client
+// Load Google Identity Services library
 function gisLoaded() {
     tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
@@ -30,14 +30,14 @@ function gisLoaded() {
     enableAuthorizeButton();
 }
 
-// Enable the "Authorize" button
+// Enable the "Authorize" button only if both libraries are loaded
 function enableAuthorizeButton() {
     if (gapiLoaded && gisLoaded) {
         document.getElementById('authorize_button').style.display = 'block';
     }
 }
 
-// Handle authentication
+// Handle authentication response
 function handleAuthResponse(response) {
     if (response.error) {
         console.error('Authentication failed:', response.error);
@@ -48,12 +48,12 @@ function handleAuthResponse(response) {
     document.getElementById('upload_section').style.display = 'block';
 }
 
-// Trigger the OAuth flow
+// Trigger the authentication process
 document.getElementById('authorize_button').onclick = () => {
     tokenClient.requestAccessToken();
 };
 
-// Upload file to Google Drive
+// Handle file upload
 document.getElementById('upload_button').onclick = async () => {
     const fileInput = document.getElementById('file_input');
     const file = fileInput.files[0];
